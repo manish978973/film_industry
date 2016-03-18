@@ -1,0 +1,43 @@
+<% provide(:title, "Movies") %>
+
+<h1 align="center">Listing Movies</h1>
+
+
+<h5><b>Actor:</b> <%= @actor.name %></h5>
+
+<h6><b>Language:</b> <%= @actor.language.name %></h6>
+<br>
+<br>
+
+<table style="width:40%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Boxoffice</th>
+      
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movie.each do |movie| %>
+      <tr>
+        <td><%= movie.name %></td>
+        <td><%= movie.boxoffice %></td>
+
+       <td> <%= link_to 'Show',actor_movie_path(@actor,movie) %></td>
+       <td><%= link_to 'Edit',edit_actor_movie_path(@actor,movie) %></td>
+       <td><%= link_to 'Destroy',actor_movie_path(@actor,movie), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Movie',new_actor_movie_path(@actor),{:style=>'color:#006400;', :class => "css_class"} %> |
+<%= link_to 'Back',language_actor_path(@actor.language_id,@actor) %>
+
+

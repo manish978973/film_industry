@@ -1,0 +1,42 @@
+<% provide(:title, "Actors") %>
+
+
+
+<h1 align="center">Listing Actors</h1>
+
+
+<h5>Language: <%= @language.name %></h5>
+<br>
+<br>
+
+<table style="width:40%">
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Place</th>
+      
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @actor.each do |actor| %>
+      <tr>
+        <td><%= actor.name %></td>
+        <td><%= actor.place %></td>
+
+         <td><%= link_to 'Show', language_actor_path(@language,actor) %></td>
+         <td><%= link_to 'Edit', edit_language_actor_path(@language,actor) %></td>
+         <td><%= link_to 'Destroy',language_actor_path(@language,actor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Actor', new_language_actor_path(@language.id),{:style=>'color:#006400;', :class => "css_class"} %> |
+<%= link_to 'Back', language_path(@language) %> |
+  <li><%= link_to "Generate Actor Report", language_path(@language,format: "csv") %></li>
+

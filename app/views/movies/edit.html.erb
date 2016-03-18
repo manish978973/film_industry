@@ -1,0 +1,26 @@
+<% provide(:title, "Edit Movie") %>
+
+<h1 align="center">Editing Movie</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+<%= form_for [@actor,@movie] do |f| %>
+<%= render 'shared/error_me'%>
+   <%= f.label :name %>
+	<%= f.text_field :name , class: 'form-control' %>
+	
+
+	 <%= f.label :boxoffice %>
+    <%= f.text_field :boxoffice , class: 'form-control' %>
+    
+	<br>
+
+
+    <%= f.submit "Update movie", class: "action" %>
+     
+<% end %>
+</div>
+</div>
+
+<%= link_to 'Back',actor_movies_path(@actor) %>

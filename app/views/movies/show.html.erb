@@ -1,0 +1,18 @@
+<% provide(:title, "Movie") %>
+
+<h1 align="center">Movie</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @movie.name %>
+</p>
+
+<p>
+	<strong>Boxoffice:</strong>
+	<%= @movie.boxoffice %>
+</p>
+
+<%= render 'layouts/header' %>
+
+<%= link_to 'Edit Movie', edit_actor_movie_path(@actor,@movie),{:style=>'color:#006400;', :class => "css_class"} %> |
+<%= link_to 'Back',actor_movies_path(@actor) %>

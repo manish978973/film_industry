@@ -1,0 +1,23 @@
+<% provide(:title, "Actor") %>
+
+<h1 align="center">Actor</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @actor.name %>
+</p>
+
+<p>
+	<strong>Place:</strong>
+	<%= @actor.place %>
+</p>
+
+<div align="center"> 
+    <%= link_to "Show Movies!", actor_movies_path(@actor), class: "btn btn-lg btn-primary" %>  
+    </div>
+
+<%= link_to 'Edit Actor', edit_language_actor_path(@language,@actor),{:style=>'color:#006400;', :class => "css_class"} %> |
+<%= link_to 'Back',language_actors_path(@language) %> |
+<%= link_to 'Generate Report', languages_path %> 
+
+
