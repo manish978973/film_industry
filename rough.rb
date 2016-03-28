@@ -25,3 +25,6 @@ CSV.open("#{Rails.root}/tmp/#{file_name}", "wb", {col_sep: ','}) do |row|
   end
 end
 
+
+
+

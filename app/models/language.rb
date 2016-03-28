@@ -3,6 +3,13 @@ class Language < ActiveRecord::Base
   has_many :actors, dependent: :destroy
   
   validates :name,  presence: true, length: { maximum: 50 }
+
+
+ 
+
+searchable do
+   text :name
+end
   
   
                     

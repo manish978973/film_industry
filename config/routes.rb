@@ -16,6 +16,7 @@ get 'static_pages/home'
 
   resources :languages do
     resources :actors
+    post :search, on: :collection
   end
 
 

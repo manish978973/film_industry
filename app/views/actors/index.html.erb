@@ -38,5 +38,5 @@
 <br>
 <%= link_to 'New Actor', new_language_actor_path(@language.id),{:style=>'color:#006400;', :class => "css_class"} %> |
 <%= link_to 'Back', language_path(@language) %> |
-  <li><%= link_to "Generate Actor Report", language_path(@language,format: "csv") %></li>
+  <%= link_to "Generate Actor Report", language_path(@language,format: "csv") %>
 

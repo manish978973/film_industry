@@ -3,10 +3,28 @@ class LanguagesController < ApplicationController
 
 def index
 	@language = Language.all
-	respond_to do |format|
+	 respond_to do |format| 
 		format.html
 		format.csv { send_data @language.to_csv }
 	end
+end
+
+def search
+
+l = Language.search do
+        fulltext params[:search]
+  end
+
+if Language.find_by(name: params[:search])
+ @languages = l.results
+
+else
+	flash[:danger] = "Enter valid Language"
+	redirect_to languages_path
+
+end
+
+  
 end
 
 

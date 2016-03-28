@@ -4,7 +4,15 @@
 
 
 <h1 align="center">Listing Languages</h1>
+<br>
+<div align='right'>
+<%= form_tag search_languages_path,method: :post do |f| %>
 
+<%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+    </div>
+<br>
+<% end %>
 
 <table style="width:40%">
   <thead>

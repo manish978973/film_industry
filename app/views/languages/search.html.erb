@@ -1,0 +1,21 @@
+<% provide(:title, "Language") %>
+
+<h1 align="center">Language</h1>
+ <% @languages.each do |language| %>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= language.name %>
+</p>
+
+
+   
+   <div align="center"> 
+    <%= link_to "Show Actors!", language_actors_path(language), class: "btn btn-lg btn-primary" %>  
+    </div>
+  
+<br>
+<%= link_to 'Edit Language', edit_language_path(language),{:style=>'color:#006400;', :class => "css_class"} %> |
+<%= link_to 'Back', languages_path %> 
+<% end %>
