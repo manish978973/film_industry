@@ -1,18 +1,41 @@
+<% if logged_in? %>
 <% provide(:title, "Movie") %>
 
 <h1 align="center">Movie</h1>
-
-<p>
-  <strong>Name:</strong>
-  <%= @movie.name %>
+<p class="mi">
+  <strong>Language:</strong>
+  <i class="yy"><%= @actor.language.name %></i>
 </p>
 
-<p>
+<p class="mi">
+  <strong>Name:</strong>
+  <i class="yy"><%= @movie.name %></i>
+</p>
+
+<p class="mi">
 	<strong>Boxoffice:</strong>
-	<%= @movie.boxoffice %>
+	<i class="yy"><%= @movie.boxoffice %></i>
 </p>
 
 <%= render 'layouts/header' %>
 
-<%= link_to 'Edit Movie', edit_actor_movie_path(@actor,@movie),{:style=>'color:#006400;', :class => "css_class"} %> |
-<%= link_to 'Back',actor_movies_path(@actor) %>
+</br>
+</br>
+
+
+
+<%= link_to "Edit Movie", edit_actor_movie_path(@actor,@movie), class: "btn btn-lg btn-success btn-sm " %>
+
+<%= link_to "Back", actor_movies_path(@actor), class: "btn btn-lg btn-default btn-sm btn-margin-left" %>
+
+
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>

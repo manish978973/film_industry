@@ -1,3 +1,6 @@
+<% if logged_in? %>
+
+<% if current_user.email=="vijay@rediffmail.com" %>
 <% provide(:title, "Edit user") %>
 <h1 align="center">Edit user</h1>
 
@@ -17,9 +20,68 @@
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation , class: 'form-control' %>
-      <br>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+      <br>
+      <div align="center">
+      <%= f.submit "Update my account", class: "btn btn-default" %>
+</div>
     <% end %>
   </div>
 </div>
+
+<%= link_to "Back",users_path %>
+
+<% elsif current_user.id==@user.id %>
+<% provide(:title, "Edit user") %>
+<h1 align="center">Edit user</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+          <%= render 'shared/error_messages' %>
+
+      <%= f.label :name %>
+    <%= f.text_field :name , class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email , class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password , class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation , class: 'form-control' %>
+
+      <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+      <br>
+      <div align="center">
+      <%= f.submit "Update my account", class: "btn btn-default" %>
+</div>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "Back",users_path %>
+
+<% elsif %>
+
+<div align="center"> <p class="mi"> <i class="yy">Please login as admin to edit all users </i></p> </div>
+<% end %>
+
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>

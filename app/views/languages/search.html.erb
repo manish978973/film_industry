@@ -1,3 +1,4 @@
+ <% if logged_in? %>
 <% provide(:title, "Language") %>
 
 <h1 align="center">Language</h1>
@@ -18,4 +19,15 @@
 <br>
 <%= link_to 'Edit Language', edit_language_path(language),{:style=>'color:#006400;', :class => "css_class"} %> |
 <%= link_to 'Back', languages_path %> 
+<% end %>
+
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
 <% end %>

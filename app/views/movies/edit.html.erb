@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <% provide(:title, "Edit Movie") %>
 
 <h1 align="center">Editing Movie</h1>
@@ -16,11 +17,21 @@
     
 	<br>
 
-
+<div class="center">
     <%= f.submit "Update movie", class: "action" %>
-     
+     </div>
 <% end %>
 </div>
 </div>
 
 <%= link_to 'Back',actor_movies_path(@actor) %>
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>

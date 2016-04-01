@@ -1,3 +1,4 @@
+ <% if logged_in? %>
 <% provide(:title, "Editing Actor") %>
 
 
@@ -14,10 +15,20 @@
 
 	<%= f.label :place %>
     <%= f.text_field :place , class: 'form-control' %>
-    
+     
+ <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+
     <br>
 
+    <div align="center">
+
 	<%= f.submit "Update actor", class: "action" %>
+
+	</div>
 <% end %>
 </div>
 </div>
@@ -32,6 +43,22 @@
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+
+
 
 
 <%= link_to 'Back', language_actors_path(@language) %>
+
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>

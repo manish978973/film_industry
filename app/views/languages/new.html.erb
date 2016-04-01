@@ -1,3 +1,4 @@
+ <% if logged_in? %>
 <% provide(:title, "New Language") %>
 
 <h1 align="center">New Language</h1>
@@ -12,9 +13,10 @@
 
 <br>
 
+<div align="center">
 
     <%= f.submit "Create language", class: "action" %>
-
+</div>
   
 <% end %>
 </div>
@@ -28,3 +30,13 @@
 <br>
 
 <%= link_to 'Back', languages_path %>
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>

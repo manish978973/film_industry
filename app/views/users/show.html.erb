@@ -1,6 +1,38 @@
+<% if logged_in? %>
+
+<% if current_user.email=="vijay@rediffmail.com" %>
 <% provide(:title, "Listing User") %>
-<h1><%= gravatar_for @user %>
+<h1><%= image_tag @user.image.url(:square) %>
 <%= @user.name %>
 </h1>
 <br> 
-Email : <%= @user.email %>
+<p class="mi">Email : <i class="yy"><%= @user.email %></i></p>
+</br>
+</br>
+
+<% elsif current_user.id==@user.id %>
+
+<% provide(:title, "Listing User") %>
+<h1><%= image_tag @user.image.url(:square) %>
+<%= @user.name %>
+</h1>
+<br> 
+<p class="mi">Email : <i class="yy"><%= @user.email %></i></p>
+</br>
+</br>
+
+
+<% else %>
+<div align="center"> <p class="mi"> <i class="yy">Please login as admin to view all users </i></p> </div>
+<% end %>
+
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>

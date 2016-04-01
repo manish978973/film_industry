@@ -1,23 +1,49 @@
+<% if logged_in? %>
 <% provide(:title, "Actor") %>
 
 <h1 align="center">Actor</h1>
 
-<p>
+
+<p class="mi">
+  <strong>Language:</strong>
+  <i class="yy"><%= @language.name %></i>
+</p>
+<p class="mi">
   <strong>Name:</strong>
-  <%= @actor.name %>
+  <i class="yy"><%= @actor.name %></i>
+</p>
+
+<p class="mi">
+	<strong>Place:</strong>
+	<i class="yy"><%= @actor.place %></i>
 </p>
 
 <p>
-	<strong>Place:</strong>
-	<%= @actor.place %>
+<%= image_tag @actor.image.url(:thumb) %>
 </p>
 
 <div align="center"> 
     <%= link_to "Show Movies!", actor_movies_path(@actor), class: "btn btn-lg btn-primary" %>  
     </div>
 
-<%= link_to 'Edit Actor', edit_language_actor_path(@language,@actor),{:style=>'color:#006400;', :class => "css_class"} %> |
-<%= link_to 'Back',language_actors_path(@language) %> |
-<%= link_to 'Generate Report', languages_path %> 
+    </br>
+    </br>
+    </br>
 
 
+<%= link_to "Edit Actor", edit_language_actor_path(@language,@actor), class: "btn btn-lg btn-success btn-sm " %>
+
+<%= link_to "Back", language_actors_path(@language), class: "btn btn-lg btn-default btn-sm btn-margin-left" %>
+
+<%= link_to "Generate Actor Report", language_path(@language,format: "csv"), class: "btn btn-lg btn-sharp btn-sm btn-margin-left" %>
+
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>

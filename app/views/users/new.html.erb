@@ -1,3 +1,4 @@
+<% if !logged_in? %>
 <% provide(:title, "Signup") %>
 <h1 align="center">Sign up</h1>
 
@@ -17,9 +18,24 @@
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation , class: 'form-control' %>
-      <br>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+      <br>
+<div align="center">
+      <%= f.submit "Create my account", class: "btn btn-default" %>
+</div>
     <% end %>
   </div>
 </div>
+
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are logged in </i></p> </div>
+</br>
+ <li class="mi">Logout to Signup  <%= link_to "Log out", logout_path, method: "delete" %></li>
+ 
+
+<% end %>

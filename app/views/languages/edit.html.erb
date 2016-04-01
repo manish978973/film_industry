@@ -1,3 +1,4 @@
+ <% if logged_in? %>
 <% provide(:title, "Editing Languages") %>
 
 
@@ -11,8 +12,9 @@
 	<%= f.label :Name %>
 	<%= f.text_field :name , class: 'form-control' %>
 	<br>
-
+<div align="center">
 <%= f.submit "Update language", class: "action" %>
+</div>
 <% end %>
 </div>
 </div>
@@ -25,4 +27,15 @@
 <br>
 
 <%= link_to 'Show', @language %> |
-<%= link_to 'Back', languages_path %>
+<%= link_to "Back", languages_path, class: "btn btn-lg btn-default btn-sm btn-margin-left" %> 
+
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>

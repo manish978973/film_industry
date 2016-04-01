@@ -1,3 +1,4 @@
+ <% if logged_in? %>
 <% provide(:title, "Actors") %>
 
 
@@ -5,15 +6,15 @@
 <h1 align="center">Listing Actors</h1>
 
 
-<h5>Language: <%= @language.name %></h5>
+<h5 class="mi">Language: <i class="yy"><%= @language.name %></i></h5>
 <br>
 <br>
 
 <table style="width:40%">
   <thead>
     <tr>
-      <th>Actor</th>
-      <th>Place</th>
+     <strong> <th class="uu">Actor</th></strong>
+      <strong><th class="uu">Place</th></strong>
       
       <th colspan="4"></th>
     </tr>
@@ -22,12 +23,13 @@
   <tbody>
     <% @actor.each do |actor| %>
       <tr>
-        <td><%= actor.name %></td>
-        <td><%= actor.place %></td>
+        <td height="75"><%= actor.name %></td>
+        <td height="75"><%= actor.place %></td>
+        <td height="75"><%= image_tag actor.image.url :thumb %></td>
 
-         <td><%= link_to 'Show', language_actor_path(@language,actor) %></td>
-         <td><%= link_to 'Edit', edit_language_actor_path(@language,actor) %></td>
-         <td><%= link_to 'Destroy',language_actor_path(@language,actor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td height="75"><%= link_to 'Show', language_actor_path(@language,actor) %></td>
+         <td height="75"><%= link_to 'Edit', edit_language_actor_path(@language,actor) %></td>
+         <td height="75"><%= link_to 'Destroy',language_actor_path(@language,actor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       
        
       </tr>
@@ -36,7 +38,21 @@
 </table>
 
 <br>
-<%= link_to 'New Actor', new_language_actor_path(@language.id),{:style=>'color:#006400;', :class => "css_class"} %> |
-<%= link_to 'Back', language_path(@language) %> |
-  <%= link_to "Generate Actor Report", language_path(@language,format: "csv") %>
 
+<%= link_to "New Actor", new_language_actor_path(@language.id), class: "btn btn-lg btn-success btn-sm " %>
+
+<%= link_to "Back", language_path(@language), class: "btn btn-lg btn-default btn-sm btn-margin-left" %>
+
+<%= link_to "Generate Actor Report", language_path(@language,format: "csv"), class: "btn btn-lg btn-sharp btn-sm btn-margin-left" %>
+
+  
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>

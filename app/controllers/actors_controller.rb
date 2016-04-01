@@ -74,7 +74,7 @@ end
 private
 
 def actor_params
-   params.require(:actor).permit(:name, :place, :language_id)
+   params.require(:actor).permit(:name, :place,:image, :language_id)
 end
 
 

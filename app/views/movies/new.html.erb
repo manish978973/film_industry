@@ -1,9 +1,10 @@
+<% if logged_in? %>
 <% provide(:title, "New Movie") %>
 
 <h1 align="center">New Movie</h1>
 
 
-<h5><strong>Actor: <%= @actor.name %></strong></h5>
+<h5 class="mi">Actor: <i class="yy"><%= @actor.name %></i></h5>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -19,9 +20,9 @@
     <%= f.text_field :boxoffice , class: 'form-control' %>
     
 	<br>
-
-
-    <%= f.submit "Create movie", class: "action" %>
+	<div class="center">
+<%= f.submit "Create movie", class: "action" %>
+</div>
      
   
 <% end %>
@@ -30,5 +31,15 @@
 
 <%= link_to 'Back',actor_movies_path(@actor) %>
 
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>
 
 

@@ -1,19 +1,20 @@
+<% if logged_in? %>
 <% provide(:title, "Movies") %>
 
 <h1 align="center">Listing Movies</h1>
 
 
-<h5><b>Actor:</b> <%= @actor.name %></h5>
+<h5 class="mi">Actor: <i class="yy"><%= @actor.name %></i></h5>
 
-<h6><b>Language:</b> <%= @actor.language.name %></h6>
+<h6 class="mi">Language: <i class="yy"><%= @actor.language.name %></i></h6>
 <br>
 <br>
 
 <table style="width:40%">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Boxoffice</th>
+     <strong> <th class="uu">Name</th></strong>
+      <strong><th class="uu">Boxoffice</th></strong>
       
       <th colspan="4"></th>
     </tr>
@@ -22,12 +23,12 @@
   <tbody>
     <% @movie.each do |movie| %>
       <tr>
-        <td><%= movie.name %></td>
-        <td><%= movie.boxoffice %></td>
+        <td height="50"><%= movie.name %></td>
+        <td height="50"><%= movie.boxoffice %></td>
 
-       <td> <%= link_to 'Show',actor_movie_path(@actor,movie) %></td>
-       <td><%= link_to 'Edit',edit_actor_movie_path(@actor,movie) %></td>
-       <td><%= link_to 'Destroy',actor_movie_path(@actor,movie), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       <td height="50"> <%= link_to 'Show',actor_movie_path(@actor,movie) %></td>
+       <td height="50"><%= link_to 'Edit',edit_actor_movie_path(@actor,movie) %></td>
+       <td height="50"><%= link_to 'Destroy',actor_movie_path(@actor,movie), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         
        
       </tr>
@@ -37,7 +38,19 @@
 
 <br>
 
-<%= link_to 'New Movie',new_actor_movie_path(@actor),{:style=>'color:#006400;', :class => "css_class"} %> |
-<%= link_to 'Back',language_actor_path(@actor.language_id,@actor) %>
 
 
+<%= link_to "New Movie", new_actor_movie_path(@actor), class: "btn btn-lg btn-success btn-sm " %>
+
+<%= link_to "Back", language_actor_path(@actor.language_id,@actor), class: "btn btn-lg btn-default btn-sm btn-margin-left" %>
+
+<% else %>
+</br>
+ <div align="center"> <p class="mi"> <i class="yy">You are not logged in </i></p> </div>
+</br>
+ <li class="mi">If you are a new user <%=link_to "Signup",signup_path %></li>
+ </br>
+ </br>
+  <li class="mi">If you are an existing user <%=link_to "Login",login_path %></li>
+
+<% end %>
