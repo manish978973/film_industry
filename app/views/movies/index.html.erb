@@ -4,7 +4,10 @@
 <h1 align="center">Listing Movies</h1>
 
 
-<h5 class="mi">Actor: <i class="yy"><%= @actor.name %></i></h5>
+<h5 class="mi">Actor: <i class="yy"><%= @actor.name  %></i> 
+<%= image_tag @actor.image.url(:thumb) %></h5>
+
+
 
 <h6 class="mi">Language: <i class="yy"><%= @actor.language.name %></i></h6>
 <br>
@@ -43,6 +46,8 @@
 <%= link_to "New Movie", new_actor_movie_path(@actor), class: "btn btn-lg btn-success btn-sm " %>
 
 <%= link_to "Back", language_actor_path(@actor.language_id,@actor), class: "btn btn-lg btn-default btn-sm btn-margin-left" %>
+
+<%= link_to "Show All Actors", language_actors_path(@actor.language_id,),class: "btn btn-lg btn-default btn-sm btn pull-right"  %>
 
 <% else %>
 </br>
