@@ -8,6 +8,7 @@
 <br> 
 <p class="mi">Email : <i class="yy"><%= @user.email %></i></p>
 </br>
+<%= link_to "Back", users_path, class: "btn btn-lg btn-default btn-sm btn-margin-left" %> 
 </br>
 
 <% elsif current_user.id==@user.id %>
@@ -16,10 +17,14 @@
 <h1><%= image_tag @user.image.url(:square) %>
 <%= @user.name %>
 </h1>
-<br> 
+
 <p class="mi">Email : <i class="yy"><%= @user.email %></i></p>
 </br>
-</br>
+<%= link_to "Back", static_pages_home_path, class: "btn btn-lg btn-default btn-sm btn-margin-left" %> 
+
+
+
+
 
 
 <% else %>

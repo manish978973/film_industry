@@ -9,7 +9,9 @@
 <%= form_tag search_languages_path,method: :post do |f| %>
 
 <%= text_field_tag :search, params[:search],:placeholder => 'Language' %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= submit_tag "Search", :name => nil ,data: { disable_with: "Searching.." } %>
+    
+    
     </div>
 <br>
 <% end %>

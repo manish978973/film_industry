@@ -11,6 +11,8 @@ def new
   @actor = Actor.new
 end
 
+
+
 def create
  
   #@language = Language.where(id: params[:language_id]).first
